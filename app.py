@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import requests
 
@@ -195,8 +196,8 @@ btn = st.button("🚀  Predict Income", use_container_width=True)
 
 if btn:
 
-    url = "http://127.0.0.1:8000/predict"
-
+    url = st.secrets.get("API_URL", os.getenv("API_URL", "http://127.0.0.1:8000/predict"))
+    
     data = {
         "age": age,
         "workclass": workclass,
